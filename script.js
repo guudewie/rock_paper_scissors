@@ -1,29 +1,3 @@
-/*
-
-player selection
-    Promt Rock Paper or Scissors
-
-computer selection
-    Randomly select Rock Paper or Scissors
-
-Play game
-    run player selection
-    run computer selection
-    calculate winner
-        rock > scissors
-        scissors > paper
-        paper > rock
-        x === x = draw
-    console.log winner
-    update player / computer score
-    
-LOOP 5 times
-    play game
-
-    declare winner
-
-*/
-
 function getComputerChoice () {
 
     let randomNumber = Math.floor(Math.random() * 3);
@@ -39,6 +13,7 @@ function getComputerChoice () {
 
     return computerChoice;
 }
+
 
 function getPlayerSelection () {
 
@@ -94,7 +69,7 @@ function playGame () {
         } else if (winner === "player") {
             playerScore++
         } 
-        
+
         console.log("Player Score: " + playerScore)
         console.log("Computer Score: " + computerScore)
 
@@ -104,7 +79,7 @@ function playGame () {
 
     if (computerScore > playerScore) {
         console.log("Computer Won The Game!")
-    } else if (computerScore > playerScore) {
+    } else if (computerScore < playerScore) {
         console.log("You Won The Game!")
     } else {
         console.log("Draw!")
