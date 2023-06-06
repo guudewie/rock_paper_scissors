@@ -1,3 +1,5 @@
+/*
+
 function getComputerChoice () {
 
     let randomNumber = Math.floor(Math.random() * 3);
@@ -87,3 +89,5 @@ function playGame () {
 }
 
 console.log(playGame())
+
+*/

@@ -1,0 +1,83 @@
+
+
+html {
+    height: 100%;
+}
+
+body {
+    border: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.header {
+    background-color: #42B7FF;
+    display: flex;
+    color: #FFD336;
+    font-weight: bold;
+    align-content: center;
+    justify-content: center;
+    padding: 1%;
+    font-size: 40px;
+    font-family: 'Palette Mosaic', cursive;
+}
+
+.main {
+    background-color: rgb(236, 236, 236);
+    flex: 1;
+}
+
+.container-instructions {
+    padding: 3%;
+    text-align: center;
+}
+
+.instructions.weapon-win {
+    margin-bottom: 10px;
+}
+
+.current-weapon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+.player {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.current-weapon {
+    font-size: 55px;
+    font-weight: bold;
+}
+
+.rock-paper-scissors {
+    padding: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1%;
+}
+
+.btn-rpc {
+    font-size: 100px;
+    border: none;
+    background-color: rgb(236, 236, 236);
+
+}
+
+
+.footer {
+    background-color: #3783B3;
+    display: flex;
+    color: white;
+    align-content: center;
+    justify-content: center;
+    padding: 1%;
+    font-size: 14px;
+    font-family: 'Palette Mosaic', cursive;
+}
