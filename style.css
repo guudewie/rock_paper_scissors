@@ -1,4 +1,10 @@
+/*
 
+* {
+    border: 1px solid red;
+}
+
+*/
 
 html {
     height: 100%;
@@ -27,11 +33,15 @@ body {
 .main {
     background-color: rgb(236, 236, 236);
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .container-instructions {
     padding: 3%;
     text-align: center;
+    font-size: 25px;
 }
 
 .instructions.weapon-win {
@@ -43,6 +53,11 @@ body {
     align-items: center;
     justify-content: center;
     gap: 40px;
+}
+
+.score {
+    align-self: flex-end;
+    font-size: 55px;
 }
 
 .player {
@@ -60,14 +75,17 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1%;
+    gap: 50px;
 }
 
 .btn-rpc {
     font-size: 100px;
     border: none;
     background-color: rgb(236, 236, 236);
+}
 
+.btn-rpc:hover {
+    font-size: 120px;
 }
 
 
