@@ -3,8 +3,8 @@ const paperSelection = document.querySelector('.paper')
 const scissorsSelection = document.querySelector('.scissors')
 
 
-let playerScoreDisplay = document.querySelector('#playerScoreDisplay')
-let computerScoreDisplay = document.querySelector('#computerScoreDisplay')
+const playerScoreDisplay = document.querySelector('#playerScoreDisplay');
+const computerScoreDisplay = document.querySelector('#computerScoreDisplay');
 
 const currentWeaponPlayer = document.querySelector('.current-weapon.you')
 const currentWeaponComputer = document.querySelector('.current-weapon.computer')
@@ -12,7 +12,40 @@ const currentWeaponComputer = document.querySelector('.current-weapon.computer')
 const winLooseMessage = document.querySelector('.weapon-win')
 const xBeatsY = document.querySelector('.instructions.beats')
 
+const modal = document.querySelector('#myModal')
 
+const rockEmoji ="👊";
+const paperEmoji = "✋";
+const scissorsEmoji = "✌";
+
+
+rockSelection.addEventListener("click", () => {return playGame("rock")});
+paperSelection.addEventListener("click", () => {return playGame("paper")});
+scissorsSelection.addEventListener("click", () => {return playGame("scissors")});
+
+let computerScore = 0;
+let playerScore = 0;
+
+
+function playGame(playerSelection){
+
+    if (computerScore === 5 || playerScore === 5) {
+        openModal()
+    }
+
+    roundWinner = playRound(playerSelection, getComputerChoice())
+    updateCount(roundWinner)
+    
+    if (computerScore === 5 || playerScore === 5) {
+        openModal()
+    }
+
+}
+
+function openModal () {
+    modal.style.display = "block";
+
+}
 
 function getComputerChoice () {
 
@@ -30,21 +63,25 @@ function getComputerChoice () {
     return computerChoice;
 }
 
+function updateCount (roundWinner) {
 
-function getPlayerSelection () {
-//    rockSelection.addEventListener("click", () => {return playRound("rock", getComputerChoice())});
-//    paperSelection.addEventListener("click", () => {return playRound("paper", getComputerChoice())});
-//    scissorsSelection.addEventListener("click", () => {return playRound("scissors", getComputerChoice())});
-    rockSelection.onclick = () => {return playRound("rock", getComputerChoice())}
+    if (roundWinner === "computer") {
+        computerScore++;
+    } else if (roundWinner === "player") {
+        playerScore++;
+    } 
+
+    playerScoreDisplay.textContent = playerScore;
+    computerScoreDisplay.textContent = computerScore;
 }
 
 
-function playRound (playerWeapon, computerWeapon) {
+// plays round based on click event; displays who won, updates cound and updates current weapon emojis
+function playRound (playerWeapon, computerWeapon) {   
 
-    let roundWinner;
-
-    computerScoreDisplay.textContent = computerScore;
-    playerScoreDisplay.textContent = playerScore;    
+    updateComputerChoiceEmoji(computerWeapon)
+    updatePlayerChoiceEmoji(playerWeapon)
+    
 
     if (playerWeapon == "rock" && computerWeapon == "scissors") {
         roundWinner = "player";
@@ -69,51 +106,69 @@ function playRound (playerWeapon, computerWeapon) {
         xBeatsY.textContent = "Draw!";
     }
 
-    if (roundWinner === "computer") {
-        computerScore++;
-        computerScoreDisplay.textContent = computerScore;
-    } else if (roundWinner === "player") {
-        playerScore++;
-        playerScoreDisplay.textContent = playerScore;
-    } 
-
-    
     return roundWinner
+
 }
 
-function playGame () {
+function updateComputerChoiceEmoji(computerChoice) {
 
-    let computerScore = 0;
-    let playerScore = 0;
-
-    computerScoreDisplay.textContent = computerScore;
-    playerScoreDisplay.textContent = playerScore;
-
-    for (let i = 0; i < 5 ; i++) {
-
-        playRound(getPlayerSelection, getComputerChoice)
-        if (winner === "computer") {
-            computerScore++;
-            computerScoreDisplay.textContent += 1;
-        } else if (winner === "player") {
-            playerScore++;
-            playerScoreDisplay.textContent += 1;
-        } 
-    }
-
-    if (computerScore > playerScore) {
-        xBeatsY.textContent = "Computer Won The Game!"
-    } else if (computerScore < playerScore) {
-        xBeatsY.textContent = "You Won The Game!"
+    if (computerChoice === "rock") {
+        currentWeaponComputer.textContent = rockEmoji;
+    } else if (computerChoice === "paper") {
+        currentWeaponComputer.textContent = paperEmoji;
     } else {
-        xBeatsY.textContent = "Draw!"
+        currentWeaponComputer.textContent = scissorsEmoji;
+    }
+}
+
+function updatePlayerChoiceEmoji(playerChoice) {
+
+    if (playerChoice === "rock") {
+        currentWeaponPlayer.textContent = rockEmoji;
+    } else if (playerChoice === "paper") {
+        currentWeaponPlayer.textContent = paperEmoji;
+    } else {
+        currentWeaponPlayer.textContent = scissorsEmoji;
     }
 }
 
 
-let computerScore = 0;
-let playerScore = 0;
 
-rockSelection.addEventListener("click", () => {return playRound("rock", getComputerChoice())});
-paperSelection.addEventListener("click", () => {return playRound("paper", getComputerChoice())});
-scissorsSelection.addEventListener("click", () => {return playRound("scissors", getComputerChoice())});
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////
+
+/*
+function resetScores(){
+    computerScore = 0;
+    playerScore = 0;
+}
+
+
+function declareWinner(){
+
+    if (computerScore >= 5 || playerScore >= 5) {
+        if (computerScore > playerScore) {
+            xBeatsY.textContent = "Computer Won The Game!"
+            winLooseMessage.textContent = "The machines take over"
+            resetScores()
+        } else if (computerScore < playerScore) {
+            xBeatsY.textContent = "You Won The Game!"
+            winLooseMessage.textContent = "Congratulations"
+            resetScores()
+        }
+    }
+
+}
+
+*/
