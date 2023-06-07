@@ -13,6 +13,8 @@ const winLooseMessage = document.querySelector('.weapon-win')
 const xBeatsY = document.querySelector('.instructions.beats')
 
 const modal = document.querySelector('#myModal')
+const winner = document.querySelector('.winner')
+const playAgainButton = document.querySelector(".playAgain")
 
 const rockEmoji ="👊";
 const paperEmoji = "✋";
@@ -23,6 +25,8 @@ rockSelection.addEventListener("click", () => {return playGame("rock")});
 paperSelection.addEventListener("click", () => {return playGame("paper")});
 scissorsSelection.addEventListener("click", () => {return playGame("scissors")});
 
+playAgainButton.addEventListener("click", () => {return playAgain()})
+
 let computerScore = 0;
 let playerScore = 0;
 
@@ -30,21 +34,29 @@ let playerScore = 0;
 function playGame(playerSelection){
 
     if (computerScore === 5 || playerScore === 5) {
-        openModal()
+        openModalWithMessage()
     }
 
     roundWinner = playRound(playerSelection, getComputerChoice())
     updateCount(roundWinner)
     
     if (computerScore === 5 || playerScore === 5) {
-        openModal()
+        openModalWithMessage(roundWinner)
     }
 
 }
 
-function openModal () {
+function openModalWithMessage (roundWinner) {
     modal.style.display = "block";
+    
+    switch (roundWinner) {
+        case "computer":
+            winner.textContent = "Computer Won The Game!"
+            break;
 
+        case "player":
+            winner.textContent = "You Won The Game!"
+    }
 }
 
 function getComputerChoice () {
@@ -76,7 +88,6 @@ function updateCount (roundWinner) {
 }
 
 
-// plays round based on click event; displays who won, updates cound and updates current weapon emojis
 function playRound (playerWeapon, computerWeapon) {   
 
     updateComputerChoiceEmoji(computerWeapon)
@@ -132,43 +143,16 @@ function updatePlayerChoiceEmoji(playerChoice) {
     }
 }
 
+function playAgain () {
 
-
-
-
-
-
-
-
-
-
-///////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////
-
-/*
-function resetScores(){
     computerScore = 0;
+    playerScoreDisplay.textContent = 0;
     playerScore = 0;
-}
+    computerScoreDisplay.textContent = 0;
+
+    modal.style.display = "none";
 
 
-function declareWinner(){
-
-    if (computerScore >= 5 || playerScore >= 5) {
-        if (computerScore > playerScore) {
-            xBeatsY.textContent = "Computer Won The Game!"
-            winLooseMessage.textContent = "The machines take over"
-            resetScores()
-        } else if (computerScore < playerScore) {
-            xBeatsY.textContent = "You Won The Game!"
-            winLooseMessage.textContent = "Congratulations"
-            resetScores()
-        }
-    }
 
 }
 
-*/
