@@ -145,14 +145,19 @@ function updatePlayerChoiceEmoji(playerChoice) {
 
 function playAgain () {
 
+    // reset scores
     computerScore = 0;
-    playerScoreDisplay.textContent = 0;
     playerScore = 0;
+
+    // reset score display
     computerScoreDisplay.textContent = 0;
+    playerScoreDisplay.textContent = 0;
 
+    // reset current weapon display
+    currentWeaponComputer.textContent = "🤜";
+    currentWeaponPlayer.textContent = "🤛";
+
+    // close modal
     modal.style.display = "none";
-
-
-
 }
 
