@@ -154,8 +154,12 @@ function playAgain () {
     playerScoreDisplay.textContent = 0;
 
     // reset current weapon display
-    currentWeaponComputer.textContent = "🤜";
-    currentWeaponPlayer.textContent = "🤛";
+    currentWeaponComputer.textContent = "🤛";
+    currentWeaponPlayer.textContent = "🤜";
+
+    // reset instructions
+    winLooseMessage.textContent = "Choose your Weapon!"
+    xBeatsY.textContent = "First to 5 wins the Game."
 
     // close modal
     modal.style.display = "none";
