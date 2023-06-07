@@ -40,7 +40,14 @@ body {
 }
 
 .instructions.weapon-win {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: 300;
+}
+
+.instructions.beats {
+    font-size: 24px;
+    font-weight: 600;
 }
 
 .current-weapon-container {
@@ -136,8 +143,7 @@ body {
     background-color: rgba(0,0,0,0.4);
   }
   
-
-  .modal-content {
+.modal-content {
     background-color: #fefefe;
     margin: auto;
     padding: 35px;
@@ -151,10 +157,10 @@ body {
     align-items: center;
     gap: 20px;
     border-radius: 20px;
-  }
+}
 
-  .menu,
-  .playAgain {
+.menu,
+.playAgain {
     height: 55px;
     width: 135px;
     border: none;
@@ -167,9 +173,8 @@ body {
     transition: .2s ease-in-out 0s;
   }
 
-  .menu:hover,
-  .playAgain:hover {
-
+.menu:hover,
+.playAgain:hover {
     cursor: pointer;
     transform: scale(1.15);
 }
