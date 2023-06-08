@@ -20,30 +20,53 @@ const indexStartGame = document.querySelector('.start-game')
 const skinPicker = document.querySelector('#skin-picker')
 const indexContainer = document.querySelector('.index-container')
 const startGame = document.querySelector('.start-game')
+const form = document.querySelector('#form')
 
-let rockEmoji ="👊";
-let paperEmoji = "✋";
-let scissorsEmoji = "✌";
+const optionYellow = document.querySelector('.optionYellow')
+const optionWhite = document.querySelector('.optionWhite')
+const optionBrown = document.querySelector('.optionBrown')
 
-let defaultEmojiPlayer = "🤜";
-let defaultEmojiComputer = "🤛";
+
+var rockEmoji;
+var paperEmoji;
+var scissorsEmoji;
+
+var defaultEmojiPlayer;
+var defaultEmojiComputer;
 
 
 
 
 //evet listener active only when on index.html
+
 if (skinPicker && startGame){
-    skinPicker.addEventListener("change", () => changeEmojiColor(skinPicker.value))
-    startGame.addEventListener("click", () => navigateToGame())
+
+    if (localStorage) {
+        changeEmojiColorIndex(localStorage.getItem('skinColor'))
+        
+        switch (localStorage.getItem('skinColor')) {
+            case 'yellow':
+                optionYellow.setAttribute("selected", "selected")
+                break;
+            case 'white':
+                optionWhite.setAttribute("selected", "selected")
+                break;
+            case 'brown':
+                optionBrown.setAttribute("selected", "selected")
+        }
+    }
+
+    skinPicker.addEventListener("change", () => changeEmojiColorIndex(skinPicker.value));
 }
 
+
+
 // set emoji color based on input
-function changeEmojiColor(color) {
-    
+function changeEmojiColorIndex(color) {
+
     switch (color){
         case "yellow":
             indexContainer.style.cssText = "background-image: url(./images/skin_color_yellow.png);"
-
             break;
         
         case "white":
@@ -53,16 +76,46 @@ function changeEmojiColor(color) {
         case "brown":
             indexContainer.style.cssText = "background-image: url(./images/skin_color_brown.png);"
     }
-
+    localStorage.setItem('skinColor', color);
 }
 
-//evet listener active only when on game.html
+function changeEmojiColorGame(color) {
+    
+    switch (color){
+        case "yellow":
+            rockSelection.textContent ="👊";
+            paperSelection.textContent = "✋";
+            scissorsSelection.textContent = "✌";
+            currentWeaponPlayer.textContent = "🤜";
+            currentWeaponComputer.textContent = "🤛";
+            break;
+        
+        case "white":
+            rockSelection.textContent ="👊🏻";
+            paperSelection.textContent = "✋🏻";
+            scissorsSelection.textContent = "✌🏻";
+            currentWeaponPlayer.textContent = "🤜🏻";
+            currentWeaponComputer.textContent = "🤛🏻";
+            break;
+        
+        case "brown":
+            rockSelection.textContent ="👊🏾";
+            paperSelection.textContent = "✋🏾";
+            scissorsSelection.textContent = "✌🏾";
+            currentWeaponPlayer.textContent = "🤜🏾";
+            currentWeaponComputer.textContent = "🤛🏾";
+    }
+}
+
+//event listener active only when on game.html
 if (rockSelection && paperSelection && scissorsSelection && playAgainButton) {
 
     rockSelection.addEventListener("click", () => {return playGame("rock")});
     paperSelection.addEventListener("click", () => {return playGame("paper")});
     scissorsSelection.addEventListener("click", () => {return playGame("scissors")});
     playAgainButton.addEventListener("click", () => {return playAgain()})
+
+    changeEmojiColorGame(localStorage.getItem('skinColor'))
 
 }
 
@@ -167,22 +220,22 @@ function playRound (playerWeapon, computerWeapon) {
 function updateComputerChoiceEmoji(computerChoice) {
 
     if (computerChoice === "rock") {
-        currentWeaponComputer.textContent = rockEmoji;
+        currentWeaponComputer.textContent = rockSelection.textContent;
     } else if (computerChoice === "paper") {
-        currentWeaponComputer.textContent = paperEmoji;
+        currentWeaponComputer.textContent = paperSelection.textContent;
     } else {
-        currentWeaponComputer.textContent = scissorsEmoji;
+        currentWeaponComputer.textContent = scissorsSelection.textContent;
     }
 }
 
 function updatePlayerChoiceEmoji(playerChoice) {
 
     if (playerChoice === "rock") {
-        currentWeaponPlayer.textContent = rockEmoji;
+        currentWeaponPlayer.textContent = rockSelection.textContent;
     } else if (playerChoice === "paper") {
-        currentWeaponPlayer.textContent = paperEmoji;
+        currentWeaponPlayer.textContent = paperSelection.textContent;
     } else {
-        currentWeaponPlayer.textContent = scissorsEmoji;
+        currentWeaponPlayer.textContent = scissorsSelection.textContent;
     }
 }
 
@@ -197,8 +250,13 @@ function playAgain () {
     playerScoreDisplay.textContent = 0;
 
     // reset current weapon display
-    currentWeaponComputer.textContent = defaultEmojiComputer;
-    currentWeaponPlayer.textContent = defaultEmojiPlayer;
+    if (localStorage.getItem('skinColor') === 'null') {
+        changeEmojiColorGame('yellow');
+    } else {
+        changeEmojiColorGame(localStorage.getItem('skinColor'));
+    }
+
+
 
     // reset instructions
     winLooseMessage.textContent = "Choose your Weapon!"
