@@ -19,23 +19,31 @@ const playAgainButton = document.querySelector(".playAgain")
 const indexStartGame = document.querySelector('.start-game')
 const skinPicker = document.querySelector('#skin-picker')
 const indexContainer = document.querySelector('.index-container')
-const optionYellow = document.querySelector('.optionYellow')
+const startGame = document.querySelector('.start-game')
 
-const rockEmoji ="👊";
-const paperEmoji = "✋";
-const scissorsEmoji = "✌";
+let rockEmoji ="👊";
+let paperEmoji = "✋";
+let scissorsEmoji = "✌";
 
+let defaultEmojiPlayer = "🤜";
+let defaultEmojiComputer = "🤛";
+
+
+
+
+//evet listener active only when on index.html
+if (skinPicker && startGame){
+    skinPicker.addEventListener("change", () => changeEmojiColor(skinPicker.value))
+    startGame.addEventListener("click", () => navigateToGame())
+}
 
 // set emoji color based on input
-
-skinPicker.addEventListener("change", () => {return changeEmojiColor(skinPicker.value)})
-
-
 function changeEmojiColor(color) {
     
     switch (color){
         case "yellow":
             indexContainer.style.cssText = "background-image: url(./images/skin_color_yellow.png);"
+
             break;
         
         case "white":
@@ -48,14 +56,17 @@ function changeEmojiColor(color) {
 
 }
 
+//evet listener active only when on game.html
+if (rockSelection && paperSelection && scissorsSelection && playAgainButton) {
 
+    rockSelection.addEventListener("click", () => {return playGame("rock")});
+    paperSelection.addEventListener("click", () => {return playGame("paper")});
+    scissorsSelection.addEventListener("click", () => {return playGame("scissors")});
+    playAgainButton.addEventListener("click", () => {return playAgain()})
 
+}
 
-rockSelection.addEventListener("click", () => {return playGame("rock")});
-paperSelection.addEventListener("click", () => {return playGame("paper")});
-scissorsSelection.addEventListener("click", () => {return playGame("scissors")});
-
-playAgainButton.addEventListener("click", () => {return playAgain()})
+//game logic start
 
 let computerScore = 0;
 let playerScore = 0;
@@ -186,8 +197,8 @@ function playAgain () {
     playerScoreDisplay.textContent = 0;
 
     // reset current weapon display
-    currentWeaponComputer.textContent = "🤛";
-    currentWeaponPlayer.textContent = "🤜";
+    currentWeaponComputer.textContent = defaultEmojiComputer;
+    currentWeaponPlayer.textContent = defaultEmojiPlayer;
 
     // reset instructions
     winLooseMessage.textContent = "Choose your Weapon!"

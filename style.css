@@ -182,8 +182,8 @@ body {
     font-size: 40px;
     font-weight: 600;
     margin-bottom: 30px;
-    color: #255979;
-    text-shadow: 2px 2px 0px #42B7FF;
+    color: #42B7FF;
+    text-shadow: 2px 2px 2px #255979;
 }
 
 
@@ -200,6 +200,20 @@ body {
     align-items: center;
     flex: 1;
     gap: 20px;
+    background-image: url(./images/skin_color_yellow.png);
+}
+
+.index-ui-container {
+    background-color: #fefefe;
+    border-radius: 20px;
+    margin: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 50px 30px;
+    gap: 30px;
 }
 
 .index-heading {
@@ -209,7 +223,6 @@ body {
     font-weight: bold;
     align-content: center;
     justify-content: center;
-    padding: 1%;
     font-size: 50px;
     font-family: 'Palette Mosaic', cursive;
     text-shadow: 2px 2px 3px #0a2d42;
