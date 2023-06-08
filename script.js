@@ -13,6 +13,7 @@ const winLooseMessage = document.querySelector('.weapon-win')
 const xBeatsY = document.querySelector('.instructions.beats')
 
 const modal = document.querySelector('#myModal')
+const modalWindow = document.querySelector('.modal-content')
 const winner = document.querySelector('.winner')
 const playAgainButton = document.querySelector(".playAgain")
 
@@ -51,10 +52,12 @@ function openModalWithMessage (roundWinner) {
     
     switch (roundWinner) {
         case "computer":
+            modalWindow.style.cssText = "background-image: url(./images/loose_modal.png);"
             winner.textContent = "Computer Won The Game!"
             break;
 
         case "player":
+            modalWindow.style.cssText = "background-image: url(./images/win_modal.png);"
             winner.textContent = "You Won The Game!"
     }
 }

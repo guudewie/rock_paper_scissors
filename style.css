@@ -130,7 +130,7 @@ body {
 
 
 .modal {
-    display: none; /* Hidden by default */
+    display: block; /* Hidden by default */
     position: fixed;
     z-index: 1;
     padding-top: 20px;
@@ -149,14 +149,15 @@ body {
     padding: 35px;
     border: 1px solid #888;
     width: 50%;
-    background-image: url(./images/modal_background.png);
-    background-size: 100%;
+    background-size: 30px 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 20px;
     border-radius: 20px;
+
+    background-image: url(./images/loose_modal.png);
 }
 
 .menu,
@@ -183,6 +184,7 @@ body {
     font-size: 40px;
     font-weight: 600;
     margin-bottom: 30px;
-    color: #2e2e2e;
+    color: #255979;
+    text-shadow: 2px 2px 0px #42B7FF;
 }
 
