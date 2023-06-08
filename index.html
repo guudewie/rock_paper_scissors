@@ -5,54 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
-    <script src="script.js" defer></script>
-    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Palette+Mosaic&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik+Puddles&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-
-    <div class="header">Rock Paper Scissors</div>
-    <div class="main">
-        <div class="container-instructions">
-            <div class="instructions weapon-win">Choose your Weapon!</div>
-            <div class="instructions beats">First to 5 wins the Game.</div>
-        </div>
-        <div class="current-weapon-container">
-            <div class="score you" id="playerScoreDisplay">0</div>
-            <div class="you-container">
-                <div class="player">You</div>
-                <div class="current-weapon you">🤜</div>
-            </div>
-            <div class="computer-container">
-                <div class="player">Computer</div>
-                <div class="current-weapon computer">🤛</div>
-            </div>
-            <div class="score computer" id="computerScoreDisplay">0</div>
-        </div>
-        <div class="rock-paper-scissors">
-            <button class="btn-rpc rock">👊</button>
-            <button class="btn-rpc paper">✋</button>
-            <button class="btn-rpc scissors">✌</button>
-        </div>            
+    <div class="index-container">
+        <div class="main-heading">Rock Paper Scissors</div>
+        <form>
+            <label for="skin-color">Choose a Color:</label>
+            <select name="color" id="skin">
+            <option value="yellow">🖖</option>
+            <option value="white">🖖🏻</option>
+            <option value="brown">🖖🏾</option>
+            </select>
+            <br><br>
+            <button type="start-game" value="start game"></button>
+        </form>
     </div>
-    <div class="footer">
-        <div class="copyright">COPYRIGHT GUUDEWIE 2023</div>
-        <a class="github-container" href="https://github.com/guudewie">
-            <img class="github-icon" src="./images/github_icon.png" width="30" height="30">
-        </a>
-    </div>
-
-    <div id="myModal" class="modal">
-
-        <div class="modal-content">
-          <div class="winner">You won the Game!</div>
-          <button class="menu">Menu</button>
-          <button class="playAgain">Play Again!</button>
-        </div>
-      
-      </div>
 
 </body>
 </html>
