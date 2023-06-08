@@ -2,7 +2,6 @@ const rockSelection = document.querySelector('.rock')
 const paperSelection = document.querySelector('.paper')
 const scissorsSelection = document.querySelector('.scissors')
 
-
 const playerScoreDisplay = document.querySelector('#playerScoreDisplay');
 const computerScoreDisplay = document.querySelector('#computerScoreDisplay');
 
@@ -17,9 +16,39 @@ const modalWindow = document.querySelector('.modal-content')
 const winner = document.querySelector('.winner')
 const playAgainButton = document.querySelector(".playAgain")
 
+const indexStartGame = document.querySelector('.start-game')
+const skinPicker = document.querySelector('#skin-picker')
+const indexContainer = document.querySelector('.index-container')
+const optionYellow = document.querySelector('.optionYellow')
+
 const rockEmoji ="👊";
 const paperEmoji = "✋";
 const scissorsEmoji = "✌";
+
+
+// set emoji color based on input
+
+skinPicker.addEventListener("change", () => {return changeEmojiColor(skinPicker.value)})
+
+
+function changeEmojiColor(color) {
+    
+    switch (color){
+        case "yellow":
+            indexContainer.style.cssText = "background-image: url(./images/skin_color_yellow.png);"
+            break;
+        
+        case "white":
+            indexContainer.style.cssText = "background-image: url(./images/skin_color_white.png);"
+            break;
+        
+        case "brown":
+            indexContainer.style.cssText = "background-image: url(./images/skin_color_brown.png);"
+    }
+
+}
+
+
 
 
 rockSelection.addEventListener("click", () => {return playGame("rock")});

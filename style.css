@@ -157,7 +157,8 @@ body {
 }
 
 .menu,
-.playAgain {
+.playAgain,
+.start-game {
     height: 55px;
     width: 135px;
     border: none;
@@ -171,7 +172,8 @@ body {
   }
 
 .menu:hover,
-.playAgain:hover {
+.playAgain:hover,
+.start-game:hover {
     cursor: pointer;
     transform: scale(1.15);
 }
@@ -188,10 +190,52 @@ body {
 
 /******************************* INDEX.HTML ************************************/
 
+
+
 .index-container {
-    background-image: url(./images/skin_color_brown.png);
     background-size: 30px 30px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
+    flex: 1;
+    gap: 20px;
+}
+
+.index-heading {
+    display: flex;
+    flex-direction: column;
+    color: #42B7FF;
+    font-weight: bold;
+    align-content: center;
+    justify-content: center;
+    padding: 1%;
+    font-size: 50px;
+    font-family: 'Palette Mosaic', cursive;
+    text-shadow: 2px 2px 3px #0a2d42;
+}
+
+
+#skin-picker,
+.start-game {
+    align-items: center;
+    width: 170px;
+    height: 60px;
+    font-size: 35px;
+    text-align: center;
+    background-color: #b1dffb;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 2px 2px 4px #0a2d42;
+}
+
+.option {
+    text-align: center;
+}
+
+.start-game {
+    color: #1e4761;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
 }
